@@ -163,7 +163,7 @@
             ><!--
             -->&<span class="pico-color-purple-contrast" data-tooltip="Required. The direction that the wind is coming from, 0–359 degrees.">winddir=<span class="winddirvalue">270</span></span
             ><!--
-            -->&<span class="pico-color-slate-contrast" data-tooltip="Optional. The barometer pressure in Hectopascals/Millibars.">baromin=<span class="barominvalue">980.0</span></span
+            -->&<span class="pico-color-slate-contrast" data-tooltip="Optional. The barometer pressure in Hectopascals/Millibars.">pressure=<span class="pressurevalue">980.0</span></span
             ><!--
             -->&<span class="pico-color-red-contrast" data-tooltip="Optional. The relative humidity from 0 to 100 percent.">humidity=<span class="humidityvalue">42</span></span
             ><!--
@@ -189,7 +189,7 @@
   "windspeedmph": <span class="windspeedmphvalue">1.5</span>, <span class="secondary">// Required. The wind speed in miles per hour.</span>
   "windgustmph": <span class="windgustmphvalue">2.7</span>, <span class="secondary">// Required. The wind gust in miles per hour.</span>
   "winddir": <span class="winddirvalue">270</span>, <span class="secondary">// Required. The direction that the wind is coming from, 0–359 degrees.</span>
-  "baromin": <span class="barominvalue">980.0</span>, <span class="secondary">// Optional. The barometer pressure in Hectopascals/Millibars.</span>
+  "pressure": <span class="pressurevalue">980.0</span>, <span class="secondary">// Optional. The barometer pressure in Hectopascals/Millibars.</span>
   "humidity": <span class="humidityvalue">42</span>, <span class="secondary">// Optional. The relative humidity from 0 to 100 percent.</span>
   "solarradiation": <span class="solarradiationvalue">170</span>, <span class="secondary">// Optional. The solar radiation in W/m².</span>
   "rainin": <span class="raininvalue">0</span>, <span class="secondary">// Optional. The amount of rain that has fallen over the past hour in inches.</span>
@@ -346,7 +346,7 @@
         let windspeedmph = getRandomNumber(0, 10, 1);
         let windgustmph = windspeedmph + getRandomNumber(0, 10, 0);
         let winddir = getRandomNumber(0, 359, 0);
-        let baromin = getRandomNumber(970, 1050, 1);
+        let pressure = getRandomNumber(970, 1050, 1);
         let humidity = getRandomNumber(10, 100, 0);
         let solarradiation = getRandomNumber(0, 1000, 0);
         let rainin = getRandomNumber(0, 2, 1);
@@ -358,7 +358,7 @@
         Array.from(document.getElementsByClassName('windspeedmphvalue')).forEach((x) => (x.innerText = windspeedmph));
         Array.from(document.getElementsByClassName('windgustmphvalue')).forEach((x) => (x.innerText = windgustmph));
         Array.from(document.getElementsByClassName('winddirvalue')).forEach((x) => (x.innerText = winddir));
-        Array.from(document.getElementsByClassName('barominvalue')).forEach((x) => (x.innerText = baromin));
+        Array.from(document.getElementsByClassName('pressurevalue')).forEach((x) => (x.innerText = pressure));
         Array.from(document.getElementsByClassName('humidityvalue')).forEach((x) => (x.innerText = humidity));
         Array.from(document.getElementsByClassName('solarradiationvalue')).forEach((x) => (x.innerText = solarradiation));
         Array.from(document.getElementsByClassName('raininvalue')).forEach((x) => (x.innerText = rainin));
