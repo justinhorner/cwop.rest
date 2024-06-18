@@ -118,6 +118,7 @@ function buildPacket(observation) {
     if (observation.searchParams.get('dailyrainin')) rainsincemidnight = Number(observation.searchParams.get('dailyrainin'));
     if (observation.searchParams.get('last24hrrainin')) rainlast24hr = Number(observation.searchParams.get('last24hrrainin'));
     if (observation.searchParams.get('baromin')) pressure = Number(observation.searchParams.get('baromin'));
+    if (observation.searchParams.get('pressure')) pressure = Number(observation.searchParams.get('pressure'));
     if (observation.searchParams.get('humidity')) humidity = Number(observation.searchParams.get('humidity'));
     if (observation.searchParams.get('solarradiation')) solarradiation = Number(observation.searchParams.get('solarradiation'));
   } else {
@@ -133,6 +134,7 @@ function buildPacket(observation) {
     if (observation.dailyrainin) rainsincemidnight = Number(observation.dailyrainin);
     if (observation.last24hrrainin) rainlast24hr = Number(observation.last24hrrainin);
     if (observation.baromin) pressure = Number(observation.baromin);
+    if (observation.pressure) pressure = Number(observation.pressure);
     if (observation.humidity) humidity = Number(observation.humidity);
     if (observation.solarradiation) solarradiation = Number(observation.solarradiation);
   }
