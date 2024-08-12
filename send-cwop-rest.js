@@ -1,6 +1,6 @@
 import { connect } from 'cloudflare:sockets';
 const cache = caches.default;
-const host_domain_name = ''
+const host_domain_name = 'send.cwop.rest'
 const host_url = `https://${host_domain_name}`;
 const packet_sender_name = 'cwop.rest';
 
