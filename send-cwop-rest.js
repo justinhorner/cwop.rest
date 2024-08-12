@@ -1,5 +1,8 @@
 import { connect } from 'cloudflare:sockets';
 const cache = caches.default;
+const host_domain_name = ''
+const host_url = `https://${host_domain_name}`;
+const packet_sender_name = 'cwop.rest';
 
 export default {
   async fetch(request) {
@@ -70,7 +73,7 @@ export async function handleRequest(request) {
   // possibly valid! has this id sent recently?
 
   const id = packet.split('>')[0];
-  const cacheKey = 'https://send.cwop.rest/id=' + id;
+  const cacheKey = `${host_url}/id=${id}`;
   const lastSentTimeResponse = await cache.match(cacheKey);
   if (lastSentTimeResponse) {
     const lastSentTime = await lastSentTimeResponse.text();
@@ -84,7 +87,7 @@ export async function handleRequest(request) {
   if (validationCode) server = 'rotate.aprs.net'; // http://www.wxqa.com/servers2use.html
   if (manuallySpecifiedServer) server = manuallySpecifiedServer;
 
-  if (url.host !== 'send.cwop.rest') { // for testing
+  if (url.host !== host_domain_name) { // for testing
     return new Response('APRS packet "' + packet + '" would have been sent to ' + server, { "status": 200 });
   }
   
@@ -97,7 +100,10 @@ export async function handleRequest(request) {
 
   await cache.put(cacheKey, new Response(Date.now().toString()));
 
-  return new Response('APRS packet "' + packet + '" sent to ' + server, { "status": 200 });
+  let msg = `APRS packet '${packet}' sent to '${server}'`;
+  console.log(msg);
+
+  return new Response(msg, { "status": 200 });
 
 }
 
@@ -199,7 +205,7 @@ function buildPacket(observation) {
     }
   }
 
-  packet += 'cwop.rest';
+  packet += packet_sender_name;
 
   return packet;
 
@@ -305,6 +311,5 @@ export async function sendPacket(packet, server, port, validationCode = '-1') {
 
   console.log('Closing connection to ' + server + ':' + port);
   
-  return new Response(serverResponse, { "headers": { "Content-Type": "text/plain" } });
-  
+  return new Response(serverResponse, { "headers": { "Content-Type": "text/plain" } }); 
 }
