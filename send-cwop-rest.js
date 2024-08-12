@@ -47,7 +47,7 @@ export async function handleRequest(request) {
 
     if (body.packet) {  // default to provided packet, if any
       packet = body.packet + '—viacwop.rest';
-    } else if (body.time && body.id && body.lat && body.long && body.tempf && body.windspeed && body.windgust && body.winddir) {  // otherwise, check for required params to build our own
+    } else if (body.time && body.id && body.lat && body.long && body.tempf && body.windspeedmph && body.windgustmph && body.winddir) {  // otherwise, check for required params to build our own
       packet = buildPacket(body);
     } else {
       return new Response('Missing required packet or readings parameters in payload', { "status": 422 });
